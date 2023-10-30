@@ -15,7 +15,7 @@ const Grid = ({ data, locale }) => {
     return () => clearTimeout(timeout);
   }, []);
   return (
-    <div className="xl:container lg:container my-12 mx-auto py-4 px-5 lg:px-2 z-[-1]">
+    <div className="xl:container lg:container my-12 mx-auto py-4 px-5 lg:px-2 relative z-[-1]">
       <div className="flex flex-wrap sm-mx-1  relative m-0">
         {data.properties.length > 0 &&
           data.properties.map((val,i) => (

@@ -44,7 +44,6 @@ function HeroMap({ longitude, latitude }) {
       });
   }, 1000);
 
-  console.log("Suggestions On Search:", suggestions)
 
   const handleInputChange = (e) => {
     const inputText = e.target.value;

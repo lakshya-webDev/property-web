@@ -28,7 +28,7 @@ export const Icon = {
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="feather feather-search w-5 h-5 absolute top-4 left-2 -translate-y-1/2 start-4 text-primary-color"
+      className="feather feather-search w-5 h-5 absolute top-[1rem] left-2 -translate-y-1/2 start-4 text-primary-color"
     >
       <circle cx="11" cy="11" r="8" />
       <line x1="21" y1="21" x2="16.65" y2="16.65" />,

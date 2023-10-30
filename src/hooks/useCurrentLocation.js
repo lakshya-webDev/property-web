@@ -23,7 +23,7 @@ const useCurrentLocation = () => {
       dispatch(setError('Geolocation is not supported by your browser.'));
       dispatch(setLoading(false));
     }
-  }, []);
+  }, [dispatch]);
 };
 
 export default useCurrentLocation;

@@ -140,7 +140,7 @@ input:focus-visible{
   overflow-y: auto;
 }
 .feather-search{
-  top: 1.5rem;
+  top: 1rem;
   left: 0.5rem;
 }
 .tile-layer-class  { 
