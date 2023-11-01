@@ -1,11 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import authReducer  from './Features/authSlice';
 import commonSlice from "./Features/commonSlice";
 import currentLocation from './Features/currentLocation';
+import authSlice from './Features/authSlice';
 
 const rootReducer = combineReducers({
     pageContext:commonSlice,
-    authUser:authReducer,
+    authUser:authSlice,
     currentLocation:currentLocation,
 });
 

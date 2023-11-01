@@ -1,13 +1,11 @@
+"use client"
 import Button from "@/components/common/Button";
 import LoginModal from "@/components/common/Modals/LoginModal";
 import cleanPathname from "@/utils/helper";
 import Link from "next-intl/link";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 
 const Navbar = ({ data, locale }) => {
-  const reduxState = useSelector((state)=>state);
-  console.log(reduxState,"reduxState")
   const brandLogoTitle = data && data.brandLogo && data.brandLogo.title;
   const brandLogoImage = data && data.brandLogo && data.brandLogo.logo;
   const primaryNavigation = data && data.primary_navigation;

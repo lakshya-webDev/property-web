@@ -4,7 +4,7 @@ import Button from "../common/Button";
 
 export const DetailedPageHeader = ({propertyName,location}) => {
   return (
-    <div className="page-header flex justify-between w-full xxl:flex-row xxl:items-end  md:flex-col md:w-full md:items-start items-end">
+    <div className="page-header flex justify-between w-full xxl:flex-row lg:flex-row lg:items-end xxl:items-end  md:flex-col md:w-full md:items-start items-end">
       <div className="page-title">
         <div className="back-btn mb-2">
           <h2

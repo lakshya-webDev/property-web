@@ -1,7 +1,12 @@
 import "../styles/globals.css";
-import 'remixicon/fonts/remixicon.css'
-export default  function RootLayout({ children }) {
+import "remixicon/fonts/remixicon.css";
+import { ReduxProvider } from "@/Redux/provider";
+export default function RootLayout({ children }) {
   return (
-    children
+    <html lang="en">
+      <body suppressHydrationWarning={true}>
+        <ReduxProvider>{children}</ReduxProvider>
+      </body>
+    </html>
   );
 }

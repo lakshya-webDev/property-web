@@ -1,7 +1,7 @@
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { setPageTitle } from "@/app/Redux/Features/commonSlice";
+import { setPageTitle } from "@/Redux/Features/commonSlice";
 import { useEffect } from "react";
 
 const Breadcrumbs = () => {

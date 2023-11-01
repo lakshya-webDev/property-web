@@ -1,10 +1,12 @@
 import { i18nConfig } from "@/i18n";
 import { unstable_setRequestLocale } from "next-intl/server";
-import { notFound } from "next/navigation";
-
+import { notFound, usePathname } from "next/navigation";
 import { createTranslator, NextIntlClientProvider } from "next-intl";
-import Layout from "@/components/layout";
-import { ReduxProvider } from "../Redux/provider";
+
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import MainContainer from "@/components/layout/MainContainer";
+
 const { locales } = i18nConfig;
 
 export async function generateStaticParams() {
@@ -13,7 +15,7 @@ export async function generateStaticParams() {
 
 async function getMessages(locale) {
   try {
-    return (await import(`../../../dictionaries/${locale}.json`)).default;
+    return (await import(`../../../../dictionaries/${locale}.json`)).default;
   } catch (error) {
     notFound();
   }
@@ -31,18 +33,17 @@ export async function generateMetadata({ params: { locale } }) {
 function LocaleLayoutComponent({ children, locale, messages }) {
   const header = messages && messages.Homepage && messages.Homepage.header;
   const footer = messages && messages.Homepage && messages.Homepage.footer;
+
   return (
-    <html lang={locale}>
-      <body suppressHydrationWarning={true}>
-        <ReduxProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <Layout header={header} footer={footer}>
-              {children}
-            </Layout>
+            <div className="web-layout flex flex-col min-h-full relative z-[-1]">
+              <Navbar data={header} />
+                <MainContainer>
+                  {children}
+                </MainContainer>
+              <Footer data={footer} />
+            </div>
           </NextIntlClientProvider>
-        </ReduxProvider>
-      </body>
-    </html>
   );
 }
 
@@ -52,8 +53,8 @@ export default async function LocaleLayout({ children, params: { locale } }) {
   if (!isValidLocale) {
     notFound();
   }
-  unstable_setRequestLocale(locale);
 
+  unstable_setRequestLocale(locale);
   // Load translation messages for the current locale
   const messages = await getMessages(locale);
 

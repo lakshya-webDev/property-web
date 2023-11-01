@@ -169,10 +169,10 @@ export default async function ProductDetail({ params }) {
                     className="grid grid-cols-2 col-span-1 items-center"
                     key={index}
                   >
-                    <h2 className="text-lg text-gray-400 font-normal capitalize">
+                    <h2 className="xxl:text-lg lg:text-md text-md text-gray-400 font-normal capitalize">
                       {feature.key}
                     </h2>
-                    <p className="text-lg text-gray-700 font-medium capitalize">
+                    <p className="xxl:text-lg lg:text-md text-md text-gray-700 font-medium capitalize">
                       {feature.value}
                     </p>
                   </div>

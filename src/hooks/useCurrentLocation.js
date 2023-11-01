@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setError, setLoading, setLocation } from '@/app/Redux/Features/currentLocation';
+import { setError, setLoading, setLocation } from '@/Redux/Features/currentLocation';
 
 const useCurrentLocation = () => {
   const dispatch = useDispatch();

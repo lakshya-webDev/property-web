@@ -4,6 +4,7 @@
       "@/*": ["./src/*"],
       "JSON":["./JSON/*"],
       "app":["./src/app/*"],
+      "redux":["./src/Redux/*"],
       "components":["./src/components/*"],
       "dictionaries":["./dictionaries/*"],
     }
