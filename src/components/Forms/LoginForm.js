@@ -1,7 +1,7 @@
 "use client"
 import React,{ useState,useEffect } from 'react';
 import { auth, signInWithGoogle } from "@/utils/firebase";
-import Input from "../common/Input"
+import {Input} from "../common/Input"
 import Button from "../common/Button"
 import CustomSelect from "../common/CustomSelect"
 import { fetchCountriesData } from "@/utils/countriesData";
@@ -13,13 +13,11 @@ const LoginForm = () => {
     const [countryData, setCountryData] = useState(null);
     const [countryOptions, setCountryOptions] = useState([]);
     const dispatch = useDispatch();
-    const {loading, currentUser} = useSelector((state)=>state.authUser.loading)
+    const {loading} = useSelector((state)=>state.authUser.loading)
     const [showOtp,setShowOTP]=useState(false);
     const [email , setEmail]= useState()
     const [view, setView] = useState("phone");
-    // const userData = useSelector((state)=> state)
-    console.log(currentUser)
-   
+    // const userData = useSelector((state)=> state)   
     useEffect(() => {
       fetchCountriesData()
         .then((data) => {
@@ -44,7 +42,7 @@ const LoginForm = () => {
           email: user.email,
           phone: user.phone,
           profile: user.photoURL,
-          lastLogin: new Date(),
+          lastLogin: new Date().toISOString(),
         };
         dispatch(saveUser(userData));
         dispatch(setLoading(false));

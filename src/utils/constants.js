@@ -25,3 +25,15 @@ export const tileLayerOptions = {
   id: "osm-bright",
   noWrap: true,
 };
+
+const storedData = JSON.parse(sessionStorage.getItem('authUser'));
+export const sessionStatus = storedData ? storedData.isAuthenticated : false;
+
+// propertyType
+
+export const PropertyTypes=[
+  {type:"Rent",title:"Property on Rent", iconUrl:"/images/rent-property.svg"},
+  {type:"Sell",title:"Property on Sell", iconUrl:"/images/sell-property.svg"},
+  {type:"Buy",title:"Property on Buy", iconUrl:"/images/buy-property.svg"}
+
+]

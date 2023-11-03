@@ -11,10 +11,12 @@ const Breadcrumbs = () => {
   if (path.startsWith("/en/") || path.startsWith("/en/")) {
     pathWithoutEn = path.substring(3);
   }
+  console.log(path,"PATH")
   const segments = pathWithoutEn.split("/").filter(Boolean);
   const pathText = segments.join("/");
   useEffect(()=>{
     if(pathText){
+      console.log(pathText,"pathText")
       dispatch(setPageTitle(pathText));
     }
   },[])
