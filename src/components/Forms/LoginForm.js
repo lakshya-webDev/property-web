@@ -4,11 +4,14 @@ import { auth, signInWithGoogle } from "@/utils/firebase";
 import {Input} from "../common/Input"
 import Button from "../common/Button"
 import CustomSelect from "../common/CustomSelect"
+import {redirect} from "next/navigation"
 import { fetchCountriesData } from "@/utils/countriesData";
 import { useDispatch, useSelector } from "react-redux";
 import { saveUser, setLoading } from "@/Redux/Features/authSlice";
 import OTPScreen from "@/components/OTPScreen";
+import { useRouter } from 'next/navigation';
 const LoginForm = () => {
+  const router = useRouter();
     const [phone, setPhone] = useState(null);
     const [countryData, setCountryData] = useState(null);
     const [countryOptions, setCountryOptions] = useState([]);
@@ -46,7 +49,7 @@ const LoginForm = () => {
         };
         dispatch(saveUser(userData));
         dispatch(setLoading(false));
-
+        router.push("/en/list-property");
       }
     };
     useEffect(() => {

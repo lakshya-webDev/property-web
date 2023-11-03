@@ -15,7 +15,9 @@ const authSlice = createSlice({
         userDetails:action.payload,
         isAuthenticated:true
       }
-      sessionStorage.setItem("authUser", JSON.stringify(userData)); // Store the user data in sessionStorage
+      if (typeof window !== "undefined") {
+      window.sessionStorage.setItem("authUser", JSON.stringify(userData)); // Store the user data in window.sessionStorage
+      }
       state.isAuthenticated = true; // Set the user as authenticated
       state.currentUser = action.payload;
     },
@@ -23,7 +25,9 @@ const authSlice = createSlice({
       state.loading = action.payload;
     },
     logout: (state) => {
-      sessionStorage.removeItem("authUser");
+      if (typeof window !== "undefined") {
+      window.sessionStorage.removeItem("authUser");
+      }
       state.currentUser = null;
       state.isAuthenticated = false; 
       state.loading = false;

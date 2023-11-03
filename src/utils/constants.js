@@ -26,7 +26,14 @@ export const tileLayerOptions = {
   noWrap: true,
 };
 
-const storedData = JSON.parse(sessionStorage.getItem('authUser'));
+let storedData;
+
+if (typeof window !== "undefined") {
+  storedData = JSON.parse(window.sessionStorage.getItem('authUser'));
+} else {
+  storedData = null; // or set a default value
+}
+
 export const sessionStatus = storedData ? storedData.isAuthenticated : false;
 
 // propertyType

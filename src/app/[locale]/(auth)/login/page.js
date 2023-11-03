@@ -4,6 +4,14 @@ import React from "react";
 
 const page = () => {
   return (
+    <>
+    <div className="bg-transparent navbar-fixed  fixed z-[3] left-0 right-0  w-full shadow-md" id="navbar-fixed">
+        <div className="container p-6">
+          <nav className="bg-transparent  flex justify-between items-center w-full">
+            <div className="text-primary-color text-4xl font-semibold cursor-pointer">Property Web</div>
+          </nav>
+        </div>
+      </div>
     <section className="md:h-screen py-36 flex items-center relative overflow-hidden">
       <div className="min-h-screen bg-boarding-banner absolute bg-cover bg-fixed inset-0  z-1 bg-center bg-no-repeat"></div>
       <div
@@ -57,6 +65,7 @@ const page = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
