@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ id, message, label , icon , ...props  }) => {
+export const Input = ({ id, message, label, icon, ...props }) => {
   return (
     <div className="group z-0 form-field w-full relative">
       <input {...props} id={id} />
@@ -17,16 +17,34 @@ const Input = ({ id, message, label , icon , ...props  }) => {
           <span className="font-medium">{message}</span>
         </p>
       )}
-      {icon && 
+      {icon && (
         <span
           className="absolute right-2 top-0 cursor-pointer"
           onClick={props.onClick}
         >
           {icon}
         </span>
-      }
+      )}
     </div>
   );
 };
-
-export default Input;
+export const InputField = ({ id, message, label, ...props }) => {
+  return (
+    <div class="mb-6">
+      <label
+        htmlFor={id}
+        className="block capitalize mb-2 text-sm font-medium text-gray-700 dark:text-gray-500"
+      >
+        {label}
+      </label>
+      <input {...props} id={id} />
+      {message ? (
+        <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+          {message}
+        </p>
+      ) : (
+        ""
+      )}
+    </div>
+  );
+};
