@@ -16,7 +16,7 @@ const PhotoGallery = ({ defaultImage, images }) => {
       </div>
       <div className="md:w-1/3 h-auto px-4 lg:w-1/3 xxl:w-1/3 flex flex-col space-y-3 relative">
           {images.slice(1, 3).map((image, index) => (
-            <div className="mb-2">
+            <div className="mb-2" key={index}>
               <img
                 key={index}
                 src={image}

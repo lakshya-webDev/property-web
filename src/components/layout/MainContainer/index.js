@@ -19,7 +19,7 @@ const MainContainer = ({ children }) => {
     }
   }, []);
   return (
-          <main className="content relative flex flex-col flex-1 h-full">
+          <main className="content relative flex flex-col flex-1">
             {children}
           </main>
   );

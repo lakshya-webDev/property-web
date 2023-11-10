@@ -1,13 +1,14 @@
-import Grid from '@/components/Grid';
-import HeroBanner from '@/components/HeroBanner';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import Grid from "@/components/Grid";
+import HeroBanner from "@/components/HeroBanner";
+import { unstable_setRequestLocale } from "next-intl/server";
+import React from "react";
 
 async function getProperties() {
   try {
     const data = await import(`/JSON/property.json`);
     return data.default;
   } catch (error) {
-    console.error('Error fetching properties:', error);
+    console.error("Error fetching properties:", error);
     return [];
   }
 }
@@ -20,9 +21,9 @@ export default async function Home({ params: { locale } }) {
   };
   const properties = await fetchData();
   return (
-    <>
-     <HeroBanner/>
-     <Grid locale={locale} data={properties} />
-    </>
-    );
+    <React.Fragment>
+      <HeroBanner />
+      <Grid locale={locale} data={properties} />
+    </React.Fragment>
+  );
 }

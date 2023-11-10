@@ -15,10 +15,10 @@ const ListPropertyLayout = ({children,title,subtitle}) => {
     }
   }, []);
   return (
-    <div className='list-property container  py-5 flex flex-col items-center' id="property-stepsMain">
+    <div className='list-property container  py-5 flex flex-col items-center mx-auto' id="property-stepsMain">
       <div className='page-header font-medium text-center p-3'>
-        <h2 className='text-3xl mb-2'>{title}</h2>
-        <p>{subtitle}</p>
+        <h2 className='lg:text-3xl text-lg mb-1 xs:text-md sm:text-lg'>{title}</h2>
+        <p className='text-sm text-gray-500'>{subtitle}</p>
       </div>
         {children}
     </div>

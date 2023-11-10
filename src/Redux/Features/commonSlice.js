@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {};
+const initialState = {
+  title:""
+};
 const commonSlice = createSlice({
   name: 'pageContext',
   initialState, 
   reducers: {
     setPageTitle: (state, action) => {
-      state.pageContext = {title:action.payload};
+      state.title = action.payload;
     },
   },
 });

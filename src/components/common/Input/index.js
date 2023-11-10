@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 export const Input = ({ id, message, label, icon, ...props }) => {
   return (
@@ -30,7 +30,7 @@ export const Input = ({ id, message, label, icon, ...props }) => {
 };
 export const InputField = ({ id, message, label, ...props }) => {
   return (
-    <div class="mb-6">
+    <div className="mb-3">
       <label
         htmlFor={id}
         className="block capitalize mb-2 text-sm font-medium text-gray-700 dark:text-gray-500"
@@ -39,7 +39,7 @@ export const InputField = ({ id, message, label, ...props }) => {
       </label>
       <input {...props} id={id} />
       {message ? (
-        <p class="mt-2 text-sm text-green-600 dark:text-green-500">
+        <p className="mt-2 text-sm text-green-600 dark:text-green-500">
           {message}
         </p>
       ) : (
@@ -48,3 +48,75 @@ export const InputField = ({ id, message, label, ...props }) => {
     </div>
   );
 };
+
+export const Textarea = ({ id, label, ...props }) => {
+  return (
+    <div className="mb-3">
+      <label
+        htmlFor={id}
+        className="block capitalize mb-2 text-sm font-medium text-gray-700 dark:text-gray-500"
+      >
+        {label}
+      </label>
+      <textarea id={id} {...props}></textarea>
+    </div>
+  );
+};
+export const SelectBox =({options,label,id, value, onChange,className,placeholder,children})=>{
+  const [isOpen, setIsOpen] = useState(false);
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+  const handleSelect = (option) => {
+    if(onChange){
+      onChange(option);
+      setIsOpen(false);
+    }
+  };
+  return(
+    <div className="relative mb-3">
+       <label
+        htmlFor={id}
+        className="block capitalize mb-2 text-sm font-medium text-gray-700 dark:text-gray-500"
+      >
+        {label}
+      </label>
+    <div
+      className={` p-2  select-none flex justify-between items-center cursor-pointer capitalize ${className} ${isOpen ? 'rounded-t-none' : ''}`}
+      onClick={handleToggle}
+    >
+      {value ? value : placeholder}
+      <div className={`icon transform ${isOpen ? 'rotate-180 transition-transform ease-in-out duration-300' : ''}`}>
+        <i class="ri-arrow-down-s-line text-lg"></i>
+      </div>
+    </div>
+    {isOpen && (
+      <ul className="absolute h-64  overflow-y-auto z-10 w-full select-none mt-1 bg-white border rounded-t-none border-gray-200 shadow-md rounded ">
+        {options.length > 0 && options.map((option, index) => (
+          <li
+            key={index}
+            className="p-2 cursor-pointer hover:bg-[#d6d3f3] capitalize text-sm font-medium"
+            onClick={() => handleSelect(option)}
+          >
+            {option}
+          </li>
+        ))}
+      </ul>
+    )}
+   {children}
+  </div>
+  )
+ }
+
+export const Checkbox =({id,label,...props})=>{
+  return(
+    <div className="flex items-center p-2 rounded">
+          <input 
+           id={id}
+           type="checkbox"
+            {...props}
+            />
+          <label htmlFor={id} className="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-500 cursor-pointer">{label}</label>
+    </div>
+  )
+} 

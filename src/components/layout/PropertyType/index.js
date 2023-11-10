@@ -11,8 +11,9 @@ import ListView from "@/components/ListView";
 const PropertyType = ({ propertiesData }) => {
   const { location } = useSelector((state) => state.currentLocation);
   const propertyTypeTitle = useSelector(
-    (state) => state.pageContext.pageContext.title
-  );
+    (state) => state.commonContext.title
+    );
+    console.log(propertyTypeTitle)
 
   const latitude = location?.latitude || 0;
   const longitude = location?.longitude || 0;

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node ./UIServer",
+    "dev": "node ./UIServer --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

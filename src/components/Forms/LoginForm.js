@@ -16,7 +16,7 @@ const LoginForm = () => {
     const [countryData, setCountryData] = useState(null);
     const [countryOptions, setCountryOptions] = useState([]);
     const dispatch = useDispatch();
-    const {loading} = useSelector((state)=>state.authUser.loading)
+    const {loading} = useSelector((state)=>state.authContext.loading)
     const [showOtp,setShowOTP]=useState(false);
     const [email , setEmail]= useState()
     const [view, setView] = useState("phone");

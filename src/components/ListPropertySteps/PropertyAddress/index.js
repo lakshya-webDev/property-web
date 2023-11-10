@@ -1,25 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputField } from "@/components/common/Input";
 import ListPropertyLayout from "@/components/layout/ListPropertyLayout";
+import { useSelector } from "react-redux";
 const PropertyAddress = ({ updateFormData }) => {
+  const address = useSelector((state) => state.propertyData.address);
+
   const [currentAddress, setCurrentAddress] = useState({
-    area: "",
-    street: "",
-    city: "",
-    postalCode: "",
+    area: address.area ? address.area : null,
+    street: address.street ? address.street : null,
+    city: address.city ? address.city : null,
+    postalCode: address.postalCode ? address.postalCode : null,
   });
-  
   const handleAddressChange = (e) => {
     const { name, value } = e.target;
-
     setCurrentAddress({
       ...currentAddress,
       [name]: value,
     });
-    
-    updateFormData("address", currentAddress);
   };
-  console.log(currentAddress,"ADDRESS")
+  useEffect(() => {
+    // Use the updateFormData function inside the useEffect hook
+    updateFormData("address", currentAddress);
+  }, [currentAddress, updateFormData]);
   return (
     <ListPropertyLayout
       title="Add Your address"

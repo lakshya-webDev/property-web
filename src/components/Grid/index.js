@@ -3,17 +3,25 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ImagePlaceHolder } from "../Loaders/ImagePlaceHolder";
 import CardLoader from "../Loaders/CardLoader";
-// import Image from "next/image";
 
 const Grid = ({ data, locale }) => {
  
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    let isMounted = true;
     const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-    return () => clearTimeout(timeout);
+      if (isMounted) {
+        setLoading(false);
+      }
+    }, 1000);
+  
+    return () => {
+      isMounted = false;
+      clearTimeout(timeout);
+    };
   }, []);
+  
+  console.log(loading,"LOADING")
   return (
     <div className="xl:container lg:container my-12 mx-auto py-4 px-5 lg:px-2 relative z-[-1]">
       <div className="flex flex-wrap sm-mx-1  relative m-0">
@@ -32,20 +40,20 @@ const Grid = ({ data, locale }) => {
                 <article
                   className={`overflow-hidden rounded-lg shadow-lg bg-white relative  bg-cover bg-no-repeat`}
                 >
-                  {loading ? (
-                    <ImagePlaceHolder />
-                  ) : (
-                    <div className="image-box relative overflow-hidden md:w-full">
+                    <div className={`${loading ? 'block':'hidden'} image-box relative overflow-hidden md:w-full`}>
+                     <ImagePlaceHolder/>
+                    </div>
+                    <div className={`${loading ? 'hidden':'block'} image-box relative overflow-hidden md:w-full`}>
                       <img
                         alt="Placeholder"
                         className="h-[245px] w-full block transition duration-500 scale-100 hover:scale-110"
                         src={val.image}
                         // quality={100}
                         layout="responsive"
-                        onLoad={()=><ImagePlaceHolder/>}
+                        onLoad={() => setLoading(false)}
                       />
                     </div>
-                  )}
+                 
                   <div className="card-content relative  xl:p-3 lg:p-2.5 md:p-4 sm:p-4 p-4">
                     {loading ? (
                       <CardLoader />

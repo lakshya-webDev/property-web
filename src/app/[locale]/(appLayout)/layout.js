@@ -36,7 +36,7 @@ function LocaleLayoutComponent({ children, locale, messages }) {
 
   return (
           <NextIntlClientProvider locale={locale} messages={messages}>
-            <div className="web-layout flex flex-col min-h-full relative z-[-1]">
+            <div className="web-layout flex flex-col min-h-full relative z-[-1] w-full">
               <Navbar data={header} />
                 <MainContainer>
                   {children}
